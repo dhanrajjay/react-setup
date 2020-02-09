@@ -19,8 +19,8 @@ i18n
     interpolation: {
       escapeValue: false // react already safes from xss
     },
-    ns: ['allstate'],
-    defaultNS: 'allstate'
+    ns: ['messages'],
+    defaultNS: 'messages'
   });
 
   export default i18n;
