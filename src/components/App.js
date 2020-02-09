@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import { Translation } from 'react-i18next';
 import '../style/app.scss';
 
 class App extends Component {
 	render() {
 		return(
-			<div className="app">Test</div>
+			<Translation>
+			{
+				t => 
+					<div className="app">
+						<span>{t('header')}</span>
+						<div>{t('new.header')}</div>						
+					</div>				
+			}
+			</Translation>
 		)
 	}
 }
