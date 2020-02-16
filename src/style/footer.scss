@@ -1,0 +1,14 @@
+.footer {
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #f7f7f7;
+	border-top: solid 1px #f7f7f7;
+	ul {
+		li {
+			display: inline;
+			padding: 20px;
+		}	
+	}
+}

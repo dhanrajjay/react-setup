@@ -9,7 +9,8 @@ module.exports = (env, args) => {
 		// To place the output in build directory
 		output: {
 			filename: "bundle.js",
-			path: __dirname + "/dist"
+			path: __dirname + "/dist",
+			publicPath: '/'
 		},
 		module: {
 			rules: [
@@ -34,7 +35,7 @@ module.exports = (env, args) => {
 			  	use: [{
 		            loader: MiniCssExtractPlugin.loader, 	            
 		          },
-		          'css-loader',
+		          'css-loader', 'sass-loader'
 		        ],
 			  }
 			]
@@ -49,6 +50,9 @@ module.exports = (env, args) => {
 					}
 				}
 			}
+		},
+		devServer: {
+		   historyApiFallback: true,
 		},
 		plugins: [
 			new HtmlWebPackPlugin({
