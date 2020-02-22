@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --hot",
     "prod": "webpack-dev-server --mode production --hot",
-    "dev-bundle": "webpack -w -d"
+    "dev-bundle": "webpack -w -d",
+    "create-webpack-component": "webpack --config webpack-transpile.config"
   },
   "author": "",
   "license": "ISC",
