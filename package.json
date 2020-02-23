@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --mode development --hot",
     "prod": "webpack-dev-server --mode production --hot",
     "dev-bundle": "webpack -w -d",
-    "create-webpack-component": "webpack --config webpack-transpile.config"
+    "create-webpack-component": "webpack --config webpack-transpile.config --env.entryPoint='./src/components/customComponent.js' --env.outputFile='components.js' --env.outputPath='/dist/agentComp'"
   },
   "author": "",
   "license": "ISC",

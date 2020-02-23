@@ -8,11 +8,11 @@ module.exports = (env, args) => {
 		devtool: (args.mode === 'development') ? 'inline-source-map' : false, 
 		// To place the output in build directory
 		entry: {
-		   app: "./src/components/customComponent.js"
+		   app: env.entryPoint
 		},
 		output: {
-			filename: "components.js",
-			path: __dirname + "/dist/customComp",
+			filename: env.outputFile,
+			path: __dirname + env.outputPath,
 			publicPath: '/'
 		},
 		module: {
