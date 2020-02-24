@@ -28,7 +28,7 @@ const rows = [
 
 export default function SimpleTable() {
   const classes = useStyles();
-
+  console.log(window.localStorage.getItem('locale'));
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
