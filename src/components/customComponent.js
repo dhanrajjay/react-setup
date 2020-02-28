@@ -1,13 +1,25 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { StylesProvider, jssPreset } from '@material-ui/styles';
+import * as retargetEvents from 'react-shadow-dom-retarget-events';
+import i18n from '../i18n';
 import { create } from 'jss';
 import Agent from './agent';
 
 export default class CustomAgentTab extends HTMLElement {
+	// Attributes we care about getting values from.
+	static get observedAttributes() {
+	   return ['locale'];
+	}
+
 	constructor() {
 		super();
 	}
+
+	changeLanguage (lang) {
+		i18n.changeLanguage(lang);
+		window.localStorage.setItem('locale', lang);
+	};
 
 	createCollapsed(title) {
 	  return React.createElement(Agent, { title }, React.createElement('slot'));
@@ -28,6 +40,14 @@ export default class CustomAgentTab extends HTMLElement {
 	      </StylesProvider>,
 	      mountPoint
 	    );
+	    retargetEvents(shadowRoot);
+	}
+
+	attributeChangedCallback(attrName, oldValue, newValue) {
+	   console.log(attrName);
+	   if (attrName === 'locale') {
+	     this.changeLanguage(newValue);
+	   }
 	}
 }
 

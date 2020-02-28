@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Checkbox, TextField, 
+import { Button, Checkbox, TextField, NativeSelect,
 	FormControl, FormControlLabel, FormLabel,
 	Radio, RadioGroup, Grid, TextareaAutosize, FormGroup, MenuItem } from '@material-ui/core';
 import SimpleTable from './grid';
@@ -36,6 +36,10 @@ const currencies = [
     label: '¥',
   },
 ];
+const currencyOptions = [];
+for (let i = 1; i <= currencies.length; i++) {
+  currencyOptions.push(<option value={currencies[i]} key={i}>{currencies[i]}</option>);
+};
 
 export default function Agent() {
   const classes = useStyles();
@@ -109,28 +113,40 @@ export default function Agent() {
         		<FormLabel component="legend">AGENT NAME OR NUMBER</FormLabel>
 				<TextField id="standard-basic" style={{width: "70%"}} />
 			</div>
-			<div style={{margin: "20px 0 0 0"}}>
+			<div style={{margin: "50px 0 0 0"}}>
 			<FormLabel component="legend">DROP DOWN MENU</FormLabel>
-			<TextField id="standard-select-currency" select value={currency}
-			 onChange={handleCurrencyChange} style={{width: "70%"}}>
+      <NativeSelect
+          labelid="customized-select-label-date"
+          id="customized-select-label-date"
+          value={currency}
+          onChange={handleCurrencyChange} style={{width: "70%"}}
+        >
 	          {currencies.map(option => (
-	            <MenuItem key={option.value} value={option.value}>
+	            <option key={option.value} value={option.value}>
 	              {option.label}
-	            </MenuItem>
+	            </option>
 	          ))}
-	        </TextField>
+	        </NativeSelect>
 			</div>
         </Grid>     
         <Grid item xs={12} sm={6}>
         	<div>
         		<SelectComp />
         	</div>
-        	<div>
+          <div style={{margin: "10px 0 0 0"}}>
         		<FormLabel component="legend">TEXT AREA</FormLabel>
-				<TextareaAutosize style={{height: "100px", width: "70%"}} aria-label="empty textarea" placeholder="Empty" />
-			</div>
+            <TextareaAutosize style={{height: "100px", width: "70%", margin: "5px 0 0 0"}} aria-label="empty textarea" placeholder="Empty" />
+          </div>
         </Grid>  
-        
+        <Grid item xs={12} sm={6} style={{margin: "-30px 0 10px 0"}}>
+          <div>
+            <FormLabel component="legend">FILE UPLOAD</FormLabel>
+            <input type="file" />
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+
+        </Grid>
         <Grid item xs={12} sm={6}>
         	<div>
 				<Button variant="contained">SEARCH</Button>

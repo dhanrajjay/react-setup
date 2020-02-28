@@ -31,18 +31,16 @@ export default function Agency() {
 	        		<FormLabel component="legend">POSTAL CODE</FormLabel>
 					<TextField id="standard-basic" style={{width: "70%"}} />
 				</div>
+				<div style={{margin: "25px 0 0 0"}}>
+					<FormLabel component="legend">PHONE NUMBER</FormLabel>
+					<TextField id="standard-basic" style={{width: "70%"}} />
+				</div>
         	</Grid>        
         	<Grid item xs={12} sm={6}>
 	        	<div>
 					<Button variant="contained">SUBMIT</Button>
 				</div>
 	        </Grid>
-        	<Grid item xs={12} sm={6}>          	
-	        	<div>        		
-	        		<FormLabel component="legend">PHONE NUMBER</FormLabel>
-					<TextField id="standard-basic" style={{width: "70%"}} />
-				</div>
-        	</Grid>        	        	
 	       </Grid>
 		</div>
 	)	

@@ -40,57 +40,72 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SelectComp() {
+  const minOffset = 0;
+  const maxOffset = 60;
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
-  const handleChange = event => {
-    setAge(event.target.value);
+  const [day, setDay] = React.useState('');
+  const [month, setMonth] = React.useState('');
+  const [year, setYear] = React.useState('');
+  const handleDay = event => {
+    setDay(event.target.value);
   };
+  const handleMonth = event => {
+    setMonth(event.target.value);
+  };
+  const handleYear = event => {
+    setYear(event.target.value);
+  };
+  const yearOptions = [];
+  for (let i = minOffset; i <= maxOffset; i++) {
+    const year = (new Date()).getFullYear() - i;
+    yearOptions.push(<option value={year} key={i}>{year}</option>);
+  };
+  const monthList = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  const monthOptions = [];
+  for (let i = 0; i < monthList.length; i++) {
+    monthOptions.push(<option value={monthList[i]} key={i}>{monthList[i]}</option>);
+  };
+  const dayOptions = [];
+  for (let i = 1; i <= 30; i++) {
+    dayOptions.push(<option value={i} key={i}>{i}</option>);
+  };
+
   return (
     <div>
       <FormLabel component="legend">EFFECTIVE DATE</FormLabel>
       <FormControl className={classes.margin}>        
-        <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          value={age}
-          onChange={handleChange}
+        <NativeSelect
+          labelid="customized-select-label-date"
+          id="customized-select-label-date"
+          value={day}
+          onChange={handleDay}
           input={<BootstrapInput />}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl className={classes.margin}>        
-        <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          value={age}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
+          {dayOptions}
+        </NativeSelect>
       </FormControl>
       <FormControl className={classes.margin}>        
         <NativeSelect
-          id="demo-customized-select-native"
-          value={age}
-          onChange={handleChange}
+          labelid="customized-select-label-month"
+          id="customized-select-label-month"
+          value={month}
+          onChange={handleMonth}
           input={<BootstrapInput />}
         >
-          <option value="" />
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
+          {monthOptions}
+        </NativeSelect>
+      </FormControl>
+      <FormControl className={classes.margin}>        
+        <NativeSelect
+          labelid="customized-select-label-year"
+          id="customized-select-label-year"
+          value={year}
+          onChange={handleYear}
+          input={<BootstrapInput />}
+        >
+          {yearOptions}
         </NativeSelect>
       </FormControl>
     </div>
