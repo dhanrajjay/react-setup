@@ -80,25 +80,19 @@ export default function Agency() {
 					<div>        		
 		        		<FormLabel component="legend">EMAIL ADDRESS</FormLabel>
 						<TextField id="standard-basic" style={{width: "70%"}} name="email" value={email} onChange={handleEmail} 
-						onBlur={() => handleEmptyError(setEmailEmpty, event)} />
-						<span className="error">{emailError}</span>
-						<span className="error">{emailEmpty}</span>
+						onBlur={() => handleEmptyError(setEmailEmpty, event)} helperText={emailError || emailEmpty} />
 					</div>
 		        </Grid>
 		        <Grid item xs={12} sm={6}>          	
 		        	<div>        		
 		        		<FormLabel component="legend">POSTAL CODE</FormLabel>
 						<TextField id="standard-basic" style={{width: "70%"}} name="postalCode" value={postalCode} onChange={hanldePostalCode} 
-						onBlur={() => handleEmptyError(setPostalCodeEmpty, event)} />
-						<span className="error">{postalCodeError}</span>
-						<span className="error">{postalCodeEmpty}</span>
+						onBlur={() => handleEmptyError(setPostalCodeEmpty, event)} helperText={postalCodeError || postalCodeEmpty} />
 					</div>
 					<div style={{margin: "25px 0 0 0"}}>
 						<FormLabel component="legend">PHONE NUMBER</FormLabel>
 						<TextField id="standard-basic" style={{width: "70%"}} name="phoneNumber" value={phoneNumber} onChange={hanldePhoneNumber} 
-						onBlur={() => handleEmptyError(setPhoneNumberEmpty, event)} />
-						<span className="error">{phoneNumberError}</span>
-						<span className="error">{phoneNumberEmpty}</span>
+						onBlur={() => handleEmptyError(setPhoneNumberEmpty, event)} helperText={phoneNumberError || phoneNumberEmpty} />
 					</div>
 	        	</Grid>
 	        	<Grid item xs={12} sm={6}>
